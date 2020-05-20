@@ -12,4 +12,10 @@ class StupidTest extends TestCase
         $foo = true;
         $this->assertTrue($foo);
     }
+
+    public function testFalseIsFalse()
+    {
+        $foo = false;
+        $this->assertFalse($foo);
+    }
 }
