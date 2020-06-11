@@ -1,5 +1,8 @@
 {
     "name": "thanhtv/phpunit-sample",
+    "type": "Sample",
+    "description": "PHPUnit sample",
+    "keywords": ["PHPUnit", "sample", "co-well"],
     "authors": [
         {
             "name": "thanhtv",

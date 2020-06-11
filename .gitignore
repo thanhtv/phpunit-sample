@@ -5,3 +5,4 @@ docker-compose
 .project
 .settings/
 .phpunit.result.cache
+reports/
