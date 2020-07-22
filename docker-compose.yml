@@ -1,0 +1,37 @@
+version: '3'
+#phien ban cua docker-compose
+services:
+#define cac container o day
+  webserver: #webserver container
+    build: .
+    environment:
+        XDEBUG_CONFIG: remote_host=host.docker.internal remote_port=9000 remote_enable=1
+    #port cua server
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      #Map (anh xa) thu muc goc cua may thuc vao thu muc html cua container
+      - ./:/var/www/html
+      #file comfig apache de cau hinh server
+      #- ./myblog.conf:/etc/apache2/sites-available/000-default.conf
+    links:
+      #cho container biet la se lien ket den container mysql duoc define o duoi.
+      - mysql
+  #define container mysql 
+  mysql:
+    #container dung image mysql:5.7 tu docker hub
+    image: mysql:5.7
+    #anh xa thu muc .docker/data/mysql voi thu muc /var/lib/mysql cua container
+    volumes:
+      - "./.docker/mysql:/var/lib/mysql"
+    restart: unless-stopped
+    #thiep lap thong tin de ket noi voi mysql db
+    environment:
+      MYSQL_ROOT_PASSWORD: root@123
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: sample_user
+      MYSQL_PASSWORD: sample@12368
+    ports:
+      #port cua container mysql
+      - "3311:3306"
