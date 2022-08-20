@@ -26,8 +26,8 @@ COPY .docker/xdebug.ini /etc/php.d/15-xdebug.ini
 RUN mkdir -p /run/php-fpm
 
 # Install pip
-RUN yum -y install python-pip
-RUN pip install --upgrade pip
+RUN yum -y install python3-pip
+RUN pip3 install --upgrade pip
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php
